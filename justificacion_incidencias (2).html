@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formato de Justificación de Incidencias</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #dbe3ee;
+      padding-bottom: 16px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #0f3d75;
+    }
+    .header p {
+      margin: 8px 0 0;
+      color: #4b5563;
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .section-title {
+      margin: 28px 0 14px;
+      font-size: 18px;
+      color: #0f3d75;
+      border-left: 5px solid #0f3d75;
+      padding-left: 10px;
+    }
+    .radio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px 20px;
+      margin-bottom: 24px;
+    }
+    .radio-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #dbe3ee;
+      border-radius: 12px;
+      background: #f8fbff;
+    }
+    .radio-card input[type="radio"] {
+      width: auto;
+      margin-top: 4px;
+      transform: scale(1.1);
+    }
+    .inline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .signatures {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+    .signature-box {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1.5px solid #111827;
+      font-size: 14px;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    button {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .primary { background: #0f3d75; color: white; }
+    .secondary { background: #e5eef9; color: #0f3d75; }
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #6b7280;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    @media (max-width: 900px) {
+      .grid, .radio-grid, .inline-grid, .signatures {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Formato de Justificación de Incidencias</h1>
+      <p>Basado en el formato RH-03 del documento proporcionado.</p>
+    </div>
+
+    <form>
+      <div class="grid">
+        <div class="field">
+          <label for="nombre">Nombre del trabajador</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Rivelino Reyes González" />
+        </div>
+        <div class="field">
+          <label for="registro">No. de registro</label>
+          <input type="text" id="registro" name="registro" placeholder="Ej. 939" />
+        </div>
+
+        <div class="field">
+          <label for="unidad">Unidad de adscripción</label>
+          <input type="text" id="unidad" name="unidad" placeholder="Ej. H.G.R.E.S.P." />
+        </div>
+        <div class="field">
+          <label for="funcion">Función</label>
+          <input type="text" id="funcion" name="funcion" placeholder="Ej. Enfermero" />
+        </div>
+
+        <div class="field">
+          <label for="turno">Turno</label>
+          <select id="turno" name="turno">
+            <option value="">Selecciona</option>
+            <option>Nocturno A</option>
+            <option>Nocturno B</option>
+            <option>Matutino</option>
+            <option>Vespertino</option>
+            <option>Jornada acumulada</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="horario">Horario</label>
+          <input type="text" id="horario" name="horario" placeholder="Ej. de 08:00 a 7:30" />
+        </div>
+
+        <div class="field">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" />
+        </div>
+        <div class="field">
+          <label for="contratacion">Tipo de contratación</label>
+          <select id="contratacion" name="contratacion">
+            <option value="">Selecciona</option>
+            <option>Federal</option>
+            <option>Homologado</option>
+            <option>Regularizado</option>
+            <option>Formalizado</option>
+            <option>Interinato</option>
+            <option>Confianza</option>
+            <option>Contrato</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 class="section-title">Tipo de justificación</h2>
+      <div class="radio-grid">
+        <label class="radio-card"><input type="radio" name="justificacion" value="Falta Injustificada"><span>1. Falta Injustificada</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Justificación de Retardo Menor"><span>2. Justificación de Retardo Menor</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Autorización de Entrada por Retardo Mayor"><span>3. Autorización de Entrada por Retardo Mayor</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Formato de Comisión para Capacitación"><span>4. Formato de Comisión para Capacitación</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Día de la Madre"><span>5. Día de la Madre</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Día de Onomástico"><span>6. Día de Onomástico</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Reposición por Tiempo Extra"><span>7. Reposición por Tiempo Extra</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Reposición por laborar en Día Concedido"><span>8. Reposición por laborar en Día Concedido</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Reposición por laborar en Descanso Obligatorio"><span>9. Reposición por laborar en Descanso Obligatorio</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Vacaciones por Estímulos"><span>10. Vacaciones por Estímulos</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Guardia personal"><span>11. Guardia personal (únicamente hospitales)</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Vacaciones Ordinarias"><span>12. Vacaciones Ordinarias 1ro./2do. periodo</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Suplencia"><span>13. Suplencia</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Vacaciones por Bajo Riesgo"><span>14. Vacaciones por Bajo Riesgo</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Vacaciones por Mediano Riesgo"><span>15. Vacaciones por Mediano Riesgo</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Vacaciones por Alto Riesgo"><span>16. Vacaciones por Alto Riesgo</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Justificante Día Económico"><span>17. Justificante Día Económico</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Justificante Omisión de Entrada"><span>18. Justificante Omisión de Entrada</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Justificante Omisión de Salida"><span>19. Justificante Omisión de Salida</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Oficio de Comisión Oficial"><span>20. Oficio de Comisión Oficial</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Constancia de Permanencia"><span>21. Constancia de Permanencia</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Cuidado Materno del ISSSTE"><span>22. Cuidado Materno del I.S.S.S.T.E.</span></label>
+        <label class="radio-card"><input type="radio" name="justificacion" value="Pase de salida"><span>23. Pase de salida</span></label>
+      </div>
+
+      <div class="inline-grid">
+        <div class="field">
+          <label for="horaInicio">Hora inicio</label>
+          <input type="time" id="horaInicio" name="horaInicio" />
+        </div>
+        <div class="field">
+          <label for="horaFinal">Hora final</label>
+          <input type="time" id="horaFinal" name="horaFinal" />
+        </div>
+        <div class="field">
+          <label for="diaJustificar">Día a justificar</label>
+          <input type="date" id="diaJustificar" name="diaJustificar" />
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top: 16px;">
+        <div class="field full">
+          <label for="comision">Comisión oficial a</label>
+          <input type="text" id="comision" name="comision" placeholder="Lugar o dependencia" />
+        </div>
+        <div class="field full">
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" placeholder="Motivo principal" />
+        </div>
+        <div class="field full">
+          <label for="observaciones">Observaciones</label>
+          <textarea id="observaciones" name="observaciones" placeholder="Escribe observaciones relevantes"></textarea>
+        </div>
+      </div>
+
+      <h2 class="section-title">Firmas</h2>
+      <div class="signatures">
+        <div class="signature-box">Trabajador<br><strong>Nombre y firma</strong></div>
+        <div class="signature-box">Cubre<br><strong>Nombre y firma</strong></div>
+        <div class="signature-box">Jefe de servicio<br><strong>Nombre y firma</strong></div>
+        <div class="signature-box">Jefa de enfermeras<br><strong>Nombre y firma</strong></div>
+      </div>
+
+      <div class="actions">
+        <button type="reset" class="secondary">Limpiar</button>
+        <button type="submit" class="primary">Guardar justificación</button>
+      </div>
+
+      <div class="note">
+        Esta versión toma como referencia el formato del archivo compartido y convierte la selección del tipo de incidencia en botones radiales para que solo pueda elegirse una opción a la vez.
+      </div>
+    </form>
+  </div>
+</body>
+</html>
