@@ -384,3 +384,25 @@ function verCamasDisponibles() {
     mostrarMensaje("No hay camas disponibles en este momento.");
   }
 }
+function guardarPaciente() {
+  const cama = document.querySelector('input[placeholder="Ej. 12"]').value;
+  const nombre = document.querySelector('input[placeholder="Nombre del paciente"]').value;
+  const diagnostico = document.querySelector('input[placeholder="Diagnóstico principal"]').value;
+
+  const paciente = {
+    cama,
+    nombre,
+    diagnostico
+  };
+
+  // Obtener pacientes existentes
+  let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
+
+  // Agregar nuevo
+  pacientes.push(paciente);
+
+  // Guardar
+  localStorage.setItem("pacientes", JSON.stringify(pacientes));
+
+  alert("Paciente guardado correctamente");
+}
